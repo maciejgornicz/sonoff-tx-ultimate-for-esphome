@@ -151,7 +151,7 @@ logger:
     uart_debug: INFO
 
 dashboard_import:
-  package_import_url: github://SmartHome-yourself/sonoff-tx-ultimate-for-esphome/tx_ultimate_cover.yaml@main
+  package_import_url: github://maciejgornicz/sonoff-tx-ultimate-for-esphome/tx_ultimate_cover.yaml@develop
   import_full_config: false
 
 api:
@@ -170,8 +170,8 @@ external_components:
 #  - source: /config/esphome/my_components
   - source:
       type: git
-      url: https://github.com/SmartHome-yourself/sonoff-tx-ultimate-for-esphome
-      ref: main
+      url: https://github.com/maciejgornicz/sonoff-tx-ultimate-for-esphome
+      ref: develop
     components: [tx_ultimate_touch]
     
 
@@ -561,8 +561,18 @@ tx_ultimate_touch:
 
   on_press:
 #    - script.execute: led_on_touch
+    
     - lambda: >
-        ESP_LOGD("tx_ultimate_touch.on_press", "Touch Position: %d / State: %d", touch.x, touch.state);
+        ESP_LOGD("tx_ultimate_touch.on_press", "Touch PositionV: %d / State: %d", touch.x, touch.state);
+    
+    - switch.turn_on: vibra
+
+    - script.execute:
+        id: handle_release
+        pos: !lambda "return touch.x;"
+
+    - lambda: >
+        ESP_LOGD("tx_ultimate_touch.on_press", "Touch PositionX: %d / State: %d", touch.x, touch.state);
 
   on_release:
     - script.execute:

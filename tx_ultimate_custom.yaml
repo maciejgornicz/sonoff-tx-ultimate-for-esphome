@@ -133,7 +133,7 @@ external_components:
   - source:
       type: git
       url: https://github.com/maciejgornicz/sonoff-tx-ultimate-for-esphome
-      ref: main
+      ref: develop
     components: [tx_ultimate_touch]
     
 
