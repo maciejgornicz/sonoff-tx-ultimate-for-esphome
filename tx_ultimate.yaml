@@ -105,15 +105,15 @@ logger:
 #  hardware_uart: UART2
   level: DEBUG
   logs:
-    binary_sensor: INFO
+    binary_sensor: DEBUG
     light: INFO
-    script: INFO
+    script: DEBUG
     switch: INFO
-    tx_ultimate_touch: INFO
-    uart_debug: INFO
+    tx_ultimate_touch: DEBUG
+    uart_debug: DEBUG
 
 dashboard_import:
-  package_import_url: github://SmartHome-yourself/sonoff-tx-ultimate-for-esphome/tx_ultimate.yaml@main
+  package_import_url: github://maciejgornicz/sonoff-tx-ultimate-for-esphome/tx_ultimate.yaml@develop
   import_full_config: false
 
 api:
@@ -132,7 +132,7 @@ external_components:
 #  - source: /config/esphome/my_components
   - source:
       type: git
-      url: https://github.com/SmartHome-yourself/sonoff-tx-ultimate-for-esphome
+      url: https://github.com/maciejgornicz/sonoff-tx-ultimate-for-esphome
       ref: main
     components: [tx_ultimate_touch]
     
